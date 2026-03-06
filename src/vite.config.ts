@@ -15,15 +15,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'esnext',
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router'],
-          'ui-vendor': ['motion', 'lucide-react', 'recharts'],
-        }
+        manualChunks: undefined,
       }
-    }
+    },
+    chunkSizeWarningLimit: 2000,
   },
   server: {
     port: 3000,
